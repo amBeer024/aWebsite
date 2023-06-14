@@ -17,15 +17,16 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
+        //create test user
         $user = User::factory()->create([
-            'name' => 'Test User',
+            'name' => 'Amber',
             'email' => 'test@example.com',
         ]);
+
+        //create the user that will provide the test vacations
         $providingUser = User::factory()->create([
             'name' => 'TweedeHandsie Vakantie',
         ]);
-        //\App\Models\Vacation::factory()->create();
-        // $collection = collect(["Nederland", "Schotland", "Denemarken"]);
 
         //create 3 countries
         $countries = Country::factory(3)->create([]);

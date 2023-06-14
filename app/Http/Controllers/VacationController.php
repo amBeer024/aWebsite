@@ -12,7 +12,9 @@ class VacationController extends Controller
      */
     public function index()
     {
-        //
+        return view('welcome', [
+            'vacations' => Vacation::with('city')->get(),
+        ]);
     }
 
     /**

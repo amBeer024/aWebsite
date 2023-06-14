@@ -8,9 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Vacation extends Model
 {
     use HasFactory;
-    public function cities()
+    public function city()
     {
-        return $this->hasOne(city::class);
+        return $this->belongsTo(City::class);
     }
     public function providedBy()
     {
