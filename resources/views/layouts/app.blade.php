@@ -29,7 +29,6 @@
 
             <!-- Page Content -->
             <main>
-                @include('layouts.mainPage')
                 {{ $slot }}
             </main>
         </div>

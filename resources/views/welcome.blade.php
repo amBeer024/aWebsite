@@ -5,6 +5,9 @@
             {{ __('Reizen') }}
         </h2>
     </x-slot>   
+    {{   __() }} 
+    
+    @include('layouts.mainPage')
 </x-app-layout>
 
     

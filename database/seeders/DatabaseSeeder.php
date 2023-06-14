@@ -4,7 +4,7 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use App\Models\Country;
-use App\Models\CountryCity;
+use App\Models\City;
 use App\Models\Vacation;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Collection;
@@ -33,7 +33,7 @@ class DatabaseSeeder extends Seeder
         $cities = collect([]);
         //give each country 2 cities
         foreach ($countries as $country) {
-            $tempCity = CountryCity::factory(2)->create([
+            $tempCity = City::factory(2)->create([
                 'country_id' => $country->id
             ]);
             $cities->push($tempCity[0], $tempCity[1]);
@@ -41,7 +41,7 @@ class DatabaseSeeder extends Seeder
         //create a vacation for each city
         foreach ($cities as $city) {
             $vacations = Vacation::factory(1)->create([
-                'country_city_id' => $city->id,
+                'city_id' => $city->id,
                 'provided_by' => $providingUser->id
             ]);
         }
