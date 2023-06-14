@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('vacations', function (Blueprint $table) {
             $table->id();
             $table->foreignId('city_id')->constrained()->cascadeOnDelete();
+            $table->string('description');
             $table->date('startDate');
             $table->date('endDate');
             $table->foreignId('provided_by')->nullable()->constrained('users', 'id')->nullOnDelete();
