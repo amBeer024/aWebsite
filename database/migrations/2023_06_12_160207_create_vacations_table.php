@@ -16,7 +16,8 @@ return new class extends Migration
             $table->foreignId('country_city_id')->constrained()->cascadeOnDelete();
             $table->date('startDate');
             $table->date('endDate');
-            $table->foreignId('booked_by')->nullable();
+            $table->foreignId('provided_by')->nullable()->constrained('users', 'id')->nullOnDelete();
+            $table->foreignId('booked_by')->nullable()->constrained('users','id')->nullOnDelete();
             $table->timestamps();
         });
     } 

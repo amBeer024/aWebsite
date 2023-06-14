@@ -21,7 +21,9 @@ class DatabaseSeeder extends Seeder
             'name' => 'Test User',
             'email' => 'test@example.com',
         ]);
-
+        $providingUser = User::factory()->create([
+            'name' => 'TweedeHandsie Vakantie',
+        ]);
         //\App\Models\Vacation::factory()->create();
         // $collection = collect(["Nederland", "Schotland", "Denemarken"]);
 
@@ -31,15 +33,16 @@ class DatabaseSeeder extends Seeder
         $cities = collect([]);
         //give each country 2 cities
         foreach ($countries as $country) {
-            $cities = CountryCity::factory(2)->create([
+            $tempCity = CountryCity::factory(2)->create([
                 'country_id' => $country->id
             ]);
+            $cities->push($tempCity[0], $tempCity[1]);
         }
-        
         //create a vacation for each city
         foreach ($cities as $city) {
-            $cities = Vacation::factory(1)->create([
-                'country_city_id' => $city->id
+            $vacations = Vacation::factory(1)->create([
+                'country_city_id' => $city->id,
+                'provided_by' => $providingUser->id
             ]);
         }
     }
