@@ -9,13 +9,8 @@ class Country extends Model
 {
     use HasFactory;
 
-    public function posts()
+    public function cities()
     {
-        return $this->hasMany(Post::class);
+        return $this->hasMany(City::class);
     }
-    public function post()
-    {
-        return $this->belongsTo(Post::class);
-    }
-
 }
