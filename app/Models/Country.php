@@ -8,4 +8,14 @@ use Illuminate\Database\Eloquent\Model;
 class Country extends Model
 {
     use HasFactory;
+
+    public function posts()
+    {
+        return $this->hasMany(Post::class);
+    }
+    public function post()
+    {
+        return $this->belongsTo(Post::class);
+    }
+
 }
