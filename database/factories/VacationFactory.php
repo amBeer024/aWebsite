@@ -17,10 +17,10 @@ class VacationFactory extends Factory
     public function definition(): array
     {
         return [   
-            'startDate' =>  now()->addDay(),
-            'endDate' => now()->addWeek(),  
-            'booked_by' => null, 
-            'description' => fake()->sentence(),    
+            'start_date' =>  now()->addDay(),
+            'end_date' => now()->addWeek(),  
+            'booked_id' => null, 
+            'description' => fake()->paragraph(),    
         ];
     }
 }

@@ -39,12 +39,26 @@ class DatabaseSeeder extends Seeder
             ]);
             $cities->push($tempCity[0], $tempCity[1]);
         }
+
+        $booly = true;
         //create a vacation for each city
         foreach ($cities as $city) {
-            $vacations = Vacation::factory(1)->create([
-                'city_id' => $city->id,
-                'provided_by' => $providingUser->id
-            ]);
+            if($booly){
+                $vacations = Vacation::factory(1)->create([
+                    'city_id' => $city->id,
+                    'provided_id' => $providingUser->id,                   
+                    'booked_id' => $user->id
+                ]);  
+                $booly=false;
+            }
+            else{
+                $vacations = Vacation::factory(1)->create([
+                    'city_id' => $city->id,
+                    'provided_id' => $providingUser->id                   
+                ]);
+                $booly=true;
+            }
+           
         }
     }
 }
