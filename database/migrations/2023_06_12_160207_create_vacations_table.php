@@ -15,13 +15,14 @@ return new class extends Migration
             $table->id();
             $table->foreignId('city_id')->constrained()->cascadeOnDelete();
             $table->string('description');
+            $table->integer('price');
             $table->date('start_date');
             $table->date('end_date');
             $table->foreignId('provided_id')->nullable()->constrained('users', 'id')->nullOnDelete();
-            $table->foreignId('booked_id')->nullable()->constrained('users','id')->nullOnDelete();
+            $table->foreignId('booked_id')->nullable()->constrained('users', 'id')->nullOnDelete();
             $table->timestamps();
         });
-    } 
+    }
 
     /**
      * Reverse the migrations.

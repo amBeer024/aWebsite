@@ -18,7 +18,8 @@ class VacationFactory extends Factory
     {
         return [   
             'start_date' =>  now()->addDay(),
-            'end_date' => now()->addWeek(),  
+            'end_date' => now()->addWeek(), 
+            'price' => random_int(10,250), 
             'booked_id' => null, 
             'description' => fake()->paragraph(),    
         ];

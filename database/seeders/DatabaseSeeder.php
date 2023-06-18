@@ -44,7 +44,7 @@ class DatabaseSeeder extends Seeder
         //create a vacation for each city
         foreach ($cities as $city) {
             if($booly){
-                $vacations = Vacation::factory(1)->create([
+                Vacation::factory(1)->create([
                     'city_id' => $city->id,
                     'provided_id' => $providingUser->id,                   
                     'booked_id' => $user->id
@@ -52,7 +52,7 @@ class DatabaseSeeder extends Seeder
                 $booly=false;
             }
             else{
-                $vacations = Vacation::factory(1)->create([
+                Vacation::factory(1)->create([
                     'city_id' => $city->id,
                     'provided_id' => $providingUser->id                   
                 ]);
