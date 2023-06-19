@@ -12,16 +12,21 @@
         <p class="mt-1 text-sm text-gray-600">
             Vacation provided by: {{ $vacation->provided_by}}
         </p>
-        @if (is_null($vacation->booked_by))
         <x-secondary-button>
-            @if(is_null(Auth::user()))
+            @if (is_null($vacation->booked_by))
+            @if(Auth::check())
+            @if(Auth::user()->id==$vacation->provided_id)
+            provided by you
+            @else
             book
             @endif
-           
+            @else
+            log in to book a vacation
+            @endif
+            @else
+            you have bought this vacation
+            @endif
         </x-secondary-button>
-        @else
-        sold
-        @endif
     </div>
 </div>
 @endforeach

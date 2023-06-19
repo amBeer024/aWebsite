@@ -14,35 +14,33 @@ class VacationController extends Controller
     {
         return view('welcome', [
             'vacations' => Vacation::filter(
-                request(['search', 'bookedByMe'])
+                request(['search'])
             )->paginate(5)->withQueryString()
         ]);
     }
 
-    public function dashboard(Request $request)
+    public function dashboard()
     {
-        $user = $request->user();
-         $filters['bookedByMe']=$user->id;
-        return view('dashboard', [
-            'vacations' => Vacation::filter($filters
-            )->paginate(5)->withQueryString()
-        ]);
+        return view('dashboard', ['countries' => CountryController::getCountries()]);
     }
+
     public function booked(Request $request)
     {
         $user = $request->user();
-         $filters['bookedByMe']=$user->id;
+        $filters['bookedByMe'] = $user->id;
         return view('dashboard', [
-            'vacations' => Vacation::filter($filters
+            'vacations' => Vacation::filter(
+                $filters
             )->paginate(5)->withQueryString()
         ]);
     }
     public function provided(Request $request)
     {
         $user = $request->user();
-         $filters['providedByMe']=$user->id;
+        $filters['providedByMe'] = $user->id;
         return view('dashboard', [
-            'vacations' => Vacation::filter($filters
+            'vacations' => Vacation::filter(
+                $filters
             )->paginate(5)->withQueryString()
         ]);
     }

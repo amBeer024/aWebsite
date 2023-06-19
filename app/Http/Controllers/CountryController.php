@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\DB;
 
 class CountryController extends Controller
 {
-    public function getCountries()
+    public static function getCountries()
     {
         $countries = DB::table('countries')->get();
         return $countries;

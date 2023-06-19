@@ -15,7 +15,7 @@ class Vacation extends Model
             ->join('countries as co', 'ci.country_id', '=', 'co.id')
             ->join('users as up', 'va.provided_id', '=', 'up.id')
             ->leftJoin('users as ub', 'va.booked_id', '=', 'ub.id')
-            ->select('city_name', 'country_name', 'description', 'price', 'start_date', 'end_date', 'up.name as provided_by', 'ub.name as booked_by')
+            ->select('city_name', 'country_name', 'description', 'price', 'start_date', 'end_date', 'up.name as provided_by', 'ub.name as booked_by','provided_id')
             ->where('va.booked_id', '=', ($filters['bookedByMe'] ?? null))
             ->when(
                 $filters['providedByMe'] ?? false,
