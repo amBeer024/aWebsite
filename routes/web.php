@@ -18,9 +18,13 @@ use App\Http\Controllers\VacationController;
 Route::get('/', [VacationController::class, 'index'])->name('home');
 
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/dashboard', [VacationController::class, 'dashboard'])->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/dashboard/booked', [VacationController::class, 'booked'])->middleware(['auth', 'verified'])->name('booked');
+Route::get('/dashboard/provided', [VacationController::class, 'provided'])->middleware(['auth', 'verified'])->name('provided');
+
+// Route::get('/dashboard', function () {
+//     return view('dashboard');
+// })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

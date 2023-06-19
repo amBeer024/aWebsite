@@ -28,37 +28,37 @@ class DatabaseSeeder extends Seeder
             'name' => 'TweedeHandsie Vakantie',
         ]);
 
-        //create 3 countries
-        $countries = Country::factory(3)->create([]);
+        //create some countries
+        $countries = Country::factory(10)->create([]);
 
         $cities = collect([]);
-        //give each country 2 cities
+        //give each country some cities
         foreach ($countries as $country) {
-            $tempCity = City::factory(2)->create([
+            $tempCities = City::factory(3)->create([
                 'country_id' => $country->id
             ]);
-            $cities->push($tempCity[0], $tempCity[1]);
+            foreach ($tempCities as $tempcity) {
+                $cities->push($tempcity);
+            }
         }
 
         $booly = true;
         //create a vacation for each city
         foreach ($cities as $city) {
-            if($booly){
+            if ($booly) {
                 Vacation::factory(1)->create([
                     'city_id' => $city->id,
-                    'provided_id' => $providingUser->id,                   
+                    'provided_id' => $providingUser->id,
                     'booked_id' => $user->id
-                ]);  
-                $booly=false;
-            }
-            else{
+                ]);
+                $booly = false;
+            } else {
                 Vacation::factory(1)->create([
                     'city_id' => $city->id,
-                    'provided_id' => $providingUser->id                   
+                    'provided_id' => $providingUser->id
                 ]);
-                $booly=true;
+                $booly = true;
             }
-           
         }
     }
 }
